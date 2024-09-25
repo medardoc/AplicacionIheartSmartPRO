@@ -1,19 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFEB3B"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tittle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Verificaremos tu IMC"
+        android:textAlignment="center"
+        android:textColor="#333"
+        android:textSize="35dp"
+        android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Ingresa tu peso"
+        android:inputType="numberDecimal"
+        android:paddingBottom="10dp" />
+
+    <EditText
+        android:id="@+id/editTextNumber2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Ingresa tu altura"
+        android:inputType="numberDecimal"
+        android:paddingBottom="10dp" />
+
+    <TextView
+        android:id="@+id/resultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:text="AQUÍ APARECERÁ EL RESULTADO"
+        android:textAlignment="center"
+        android:textColor="#F44336"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btnCalcularIMC"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:layout_marginTop="150dp"
+        android:text="Calcular IMC" />
+    <Button
+        android:id="@+id/btnLimpiarCampos"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:layout_marginTop="250dp"
+        android:text="Volver a Intentarlo" />
+    <Button
+        android:id="@+id/btnRegresarInicio"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:layout_marginTop="350dp"
+        android:text="Salir" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
