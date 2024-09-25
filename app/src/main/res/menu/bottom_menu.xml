@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/calcularImc"
+        android:icon="@drawable/imc"
+        android:title="Calcular IMC" />
+    <item
+        android:id="@+id/RecomendarGym"
+        android:icon="@drawable/pesos"
+        android:title="Recomendaciones de GYM" />
+    <item
+        android:id="@+id/RecomendarComida"
+        android:icon="@drawable/alimentacion_saludable"
+        android:title="Recomendaciones de alimentación" />
+</menu>

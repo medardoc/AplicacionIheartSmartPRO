@@ -9,14 +9,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-//Declaramos nuestros elementos del Layout
+
     private EditText editTextPeso;
     private EditText editTextAltura;
     private TextView resultado;
     private Button btnCalcularIMC;
     private Button btnLimpiarCampos;
     private Button btnRegresarInicio;
-//Instanciamos al Layout activity_main.xml
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
