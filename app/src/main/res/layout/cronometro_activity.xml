@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo3"
+    tools:context=".CronometroActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cronometro"
+                android:textAlignment="center"
+                android:textColor="#333"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <Chronometer
+                android:id="@+id/cronometro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:textSize="24sp"
+                android:textColor="#000"
+                android:format="Tiempo: %s" />
+
+            <Button
+                android:id="@+id/btnIniciar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Iniciar"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#4CAF50" />
+
+            <Button
+                android:id="@+id/btnPausar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pausar"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FF9800" />
+
+            <Button
+                android:id="@+id/btnReiniciar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reiniciar"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#F44336" />
+
+
+
+            <Button
+                android:id="@+id/btnRegresarInicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#FF5722"
+                android:text="Volver atras"
+                android:padding="20dp"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

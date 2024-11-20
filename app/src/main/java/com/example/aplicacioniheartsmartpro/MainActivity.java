@@ -113,9 +113,9 @@ public class MainActivity extends AppCompatActivity {
         resultado.setText("AQUÍ APARECERÁ EL RESULTADO");
     }
 
-    // Método para regresar a la pantalla de inicio
+    // Método para regresar a al menu
     private void regresarInicio() {
-        Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+        Intent intent = new Intent(MainActivity.this, PanelActivity.class);
         startActivity(intent);
         finish(); // Opcional: Cierra la actividad actual para que el usuario no pueda regresar a ella con el botón de retroceso
     }

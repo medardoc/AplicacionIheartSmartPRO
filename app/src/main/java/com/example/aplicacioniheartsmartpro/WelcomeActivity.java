@@ -28,15 +28,15 @@ public class WelcomeActivity extends AppCompatActivity {
                 btnEnterPanel.setVisibility(View.INVISIBLE);
                 progressBar.setVisibility(View.VISIBLE);
 
-                // Simula una acción (por ejemplo, un retraso de 2 segundos) y luego cambia a MainActivity
+                // Simula una acción (por ejemplo, un retraso de 1 segundos) y luego cambia a PanelActivity
                 new android.os.Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                        Intent intent = new Intent(WelcomeActivity.this, PanelActivity.class);
                         startActivity(intent);
                         finish(); // Cierra la actividad actual
                     }
-                }, 2000); // 2 segundos de retraso
+                }, 500); // 1 segundos de retraso
             }
         });
     }

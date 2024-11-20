@@ -33,10 +33,15 @@ android {
 }
 
 dependencies {
+
+    // Agregar dependencias de OSMDroid para OpenStreetMap
+    implementation("org.osmdroid:osmdroid-android:6.1.8")
+    implementation("org.osmdroid:osmdroid-wms:6.1.11")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
-    implementation(libs.constraintlayout) // Usa alias para constraintlayout
+    implementation(libs.constraintlayout)
+    implementation(libs.play.services.maps) // Usa alias para constraintlayout
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

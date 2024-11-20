@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/fondo3"
+    tools:context=".PanelActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="40dp">
+
+            <TextView
+                android:id="@+id/tittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MENU"
+                android:textAlignment="center"
+                android:textColor="#333"
+                android:textSize="35sp"
+                android:padding="20dp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/btnIrCalcularIMC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#FF5722"
+                android:text="Calculadora de IMC"
+                android:padding="20dp"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/btnIrGimnasio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#FF5722"
+                android:text="Gimnasios Recomendados"
+                android:padding="20dp"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnIrNutricionista"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#FF5722"
+                android:text="Nutricionistas"
+                android:padding="20dp"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/btnIrContadorPasos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#FF5722"
+                android:text="Contador de Pasos"
+                android:padding="20dp"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/btnIrAlimentos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#FF5722"
+                android:text="Alimentos Recomendables"
+                android:padding="20dp"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/btnIrControlPeso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#FF5722"
+                android:text="Control De Peso"
+                android:padding="20dp"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/btnIrCronometro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#FF5722"
+                android:text="Cronometro"
+                android:padding="20dp"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnRegresarInicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#FF5722"
+                android:text="Salir"
+                android:padding="20dp"
+                android:textSize="20sp" />
+
+            <!-- ProgressBar -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="400dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

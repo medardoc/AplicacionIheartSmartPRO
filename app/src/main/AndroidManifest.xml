@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Agrego Permisos de Internet y Localización -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AplicacionIheartSmartPRO"
+        android:configChanges="orientation|screenSize|keyboardHidden"
         tools:targetApi="31">
 
         <!-- Nueva actividad WelcomeActivity -->
@@ -24,8 +32,22 @@
             </intent-filter>
         </activity>
 
+        <!-- Actividad PanelActivity -->
+        <activity android:name=".PanelActivity" android:exported="true" />
         <!-- Actividad MainActivity -->
         <activity android:name=".MainActivity" android:exported="true" />
+        <!-- Actividad AlimentosActivity -->
+        <activity android:name=".AlimentosActivity" android:exported="true" />
+        <!-- Actividad Contadorctivity -->
+        <activity android:name=".ContadorActivity" android:exported="true" />
+        <!-- Actividad ControlPesoActivity -->  
+        <activity android:name=".ControlPesoActivity" android:exported="true" />
+        <!-- Actividad CronometroActivity -->
+        <activity android:name=".CronometroActivity" android:exported="true" />
+        <!-- Actividad NutricionistaActivity -->
+        <activity android:name=".NutricionistaActivity" android:exported="true" />
+        <!-- Actividad GimansioActivity -->
+        <activity android:name=".GimnasioActivity" android:exported="true" />
 
     </application>
 
