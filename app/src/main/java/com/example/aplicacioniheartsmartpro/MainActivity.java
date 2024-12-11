@@ -6,7 +6,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.android.service.MqttAndroidClient;
+
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCalcularIMC;
     private Button btnLimpiarCampos;
     private Button btnRegresarInicio;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private MqttAndroidClient mqttAndroidClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
         btnCalcularIMC = findViewById(R.id.btnCalcularIMC);
         btnLimpiarCampos = findViewById(R.id.btnLimpiarCampos);
         btnRegresarInicio = findViewById(R.id.btnRegresarInicio);
+
+        // Inicializa Firebase
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("imcResults");
+
+        // Inicializa MQTT
+        mqttAndroidClient = new MqttAndroidClient(this, "tcp://your-broker-url:1883", "clientId");
 
         // Configura el listener para el botón de calcular IMC
         btnCalcularIMC.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +99,13 @@ public class MainActivity extends AppCompatActivity {
 
             // Muestra el resultado en el TextView
             resultado.setText(String.format("Tu IMC es %.2f\n%s", imc, categoria));
+
+            // Guardar el resultado en Firebase
+            guardarResultadoFirebase(imc, categoria);
+
+            // Enviar alerta MQTT
+            enviarMensajeMQTT(imc, categoria);
+
         } catch (NumberFormatException e) {
             // Muestra un mensaje de error si hay un problema con la conversión
             resultado.setText("Error en los valores ingresados.");
@@ -113,11 +140,45 @@ public class MainActivity extends AppCompatActivity {
         resultado.setText("AQUÍ APARECERÁ EL RESULTADO");
     }
 
-    // Método para regresar a al menu
+    // Método para regresar al menú
     private void regresarInicio() {
         Intent intent = new Intent(MainActivity.this, PanelActivity.class);
         startActivity(intent);
         finish(); // Opcional: Cierra la actividad actual para que el usuario no pueda regresar a ella con el botón de retroceso
     }
-}
 
+    // Guardar el resultado en Firebase
+    private void guardarResultadoFirebase(double imc, String categoria) {
+        String key = databaseReference.push().getKey();
+        if (key != null) {
+            ResultadosIMC resultadoIMC = new ResultadosIMC(imc, categoria);
+            databaseReference.child(key).setValue(resultadoIMC);
+        }
+    }
+
+    // Enviar un mensaje MQTT con el resultado
+    private void enviarMensajeMQTT(double imc, String categoria) {
+        String message = "Nuevo IMC calculado: " + imc + "\nCategoría: " + categoria;
+        try {
+            MqttMessage mqttMessage = new MqttMessage();
+            mqttMessage.setPayload(message.getBytes());
+            mqttAndroidClient.publish("topic/imcResults", mqttMessage);
+        } catch (MqttException e) {
+            e.printStackTrace();
+            Toast.makeText(MainActivity.this, "Error al enviar el mensaje MQTT", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // Clase para representar el resultado IMC
+    public static class ResultadosIMC {
+        public double imc;
+        public String categoria;
+
+        public ResultadosIMC() {}
+
+        public ResultadosIMC(double imc, String categoria) {
+            this.imc = imc;
+            this.categoria = categoria;
+        }
+    }
+}

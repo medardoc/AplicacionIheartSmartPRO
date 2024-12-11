@@ -1,17 +1,21 @@
 package com.example.aplicacioniheartsmartpro;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import android.widget.Toast; // Agrega esta línea para los mensajes de confirmación
 
 public class ContadorActivity extends AppCompatActivity implements SensorEventListener {
     private SensorManager sensorManager;
@@ -28,7 +32,14 @@ public class ContadorActivity extends AppCompatActivity implements SensorEventLi
 
         stepCountTextView = findViewById(R.id.stepCountTextView);
         btnRegresarInicio = findViewById(R.id.btnRegresarInicio);
-        btnReiniciarPasos = findViewById(R.id.btnReiniciarPasos); // Vincula el botón al layout
+        btnReiniciarPasos = findViewById(R.id.btnReiniciarPasos);
+
+        // Solicitar permiso para ACTIVITY_RECOGNITION si es necesario (Android 10+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (checkSelfPermission(Manifest.permission.ACTIVITY_RECOGNITION) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION}, 0);
+            }
+        }
 
         // Configuración del Sensor
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -91,12 +102,25 @@ public class ContadorActivity extends AppCompatActivity implements SensorEventLi
         initialSteps = 0;
         steps = 0;
         stepCountTextView.setText("Pasos: " + steps);
-        Toast.makeText(this, "Contador reiniciado", Toast.LENGTH_SHORT).show(); // Mensaje para el usuario
+        Toast.makeText(this, "Contador reiniciado", Toast.LENGTH_SHORT).show();
     }
 
     private void regresarInicio() {
         Intent intent = new Intent(ContadorActivity.this, PanelActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    // Manejar la respuesta del usuario al permiso
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 0) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permiso otorgado", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Permiso denegado", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

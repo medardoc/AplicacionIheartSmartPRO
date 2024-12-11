@@ -5,9 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle; // Importa la clase Bundle para guardar el estado de la actividad.
+
 import android.preference.PreferenceManager; // Importa PreferenceManager para gestionar las preferencias
-import android.view.View; // Importa la clase View para manejar vistas en la interfaz.
 import android.widget.AdapterView; // Importa AdapterView para manejar eventos en vistas adaptables.
 import android.widget.ArrayAdapter; // Importa ArrayAdapter para adaptar arrays a vistas como Spinners.
 import android.widget.Spinner; // Importa Spinner, que es una lista desplegable en Android.

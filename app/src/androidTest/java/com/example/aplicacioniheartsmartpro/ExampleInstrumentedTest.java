@@ -1,4 +1,4 @@
-package com.example.aplicacioniheartsmartpro;
+package com.santotomas.aplicacioniheartsmartpro;
 
 import android.content.Context;
 

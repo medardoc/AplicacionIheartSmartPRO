@@ -18,13 +18,9 @@ import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.Polyline;
 
 // Importaciones para VideoView y WebView
-import android.net.Uri;
-import android.widget.MediaController;
-import android.widget.VideoView;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.media.MediaPlayer;
 
 public class GimnasioActivity extends AppCompatActivity {
 
